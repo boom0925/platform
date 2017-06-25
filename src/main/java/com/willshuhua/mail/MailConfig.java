@@ -15,7 +15,6 @@ import java.util.Properties;
  */
 @Configuration
 @PropertySource("mail.properties")
-//@PropertySource("com/willshuhua/res/mail.properties")
 public class MailConfig {
 
     @Value("${mail.host}")

@@ -8,6 +8,6 @@
         SELECT
         *
         FROM
-        user_copy
+        user
     </select>
 </mapper>

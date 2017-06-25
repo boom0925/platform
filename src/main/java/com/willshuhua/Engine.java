@@ -43,7 +43,7 @@ public class Engine {
         MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
         helper.setFrom(mailUserName);
         helper.setTo(email);
-        helper.setSubject("服务器信息通知");
+        helper.setSubject("DEMO");
         helper.setText(content, true);      //true可以显示html格式的文本
         mailSender.send(message);
         System.out.println(name + "===================发送成功");
