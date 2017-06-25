@@ -38,13 +38,12 @@ public class Engine {
     private String mailUserName;
 
     private void sendSingleEmail(String name, String email, String text) throws MessagingException {
-        String content = text.replace("PERSON_NAME", name);
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
         helper.setFrom(mailUserName);
         helper.setTo(email);
         helper.setSubject("DEMO");
-        helper.setText(content, true);      //true可以显示html格式的文本
+        helper.setText(text, true);      //true可以显示html格式的文本
         mailSender.send(message);
         System.out.println(name + "===================发送成功");
     }
