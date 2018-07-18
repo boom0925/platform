@@ -16,6 +16,7 @@
   </modules>
   <properties>
   	<project.version>0.0.1</project.version>
+  	<project.modelVersion>4.0.0</project.modelVersion>  
   </properties>
 <build>  
         <plugins>  
