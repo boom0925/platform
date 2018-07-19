@@ -1,33 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.cn</groupId>
-  <artifactId>platform</artifactId>
-  <version>0.0.1</version>
-  <packaging>pom</packaging>
-  <name>platform</name>
-  <modules>
-  	<module>platform-dao</module>
-    <module>platform-service</module>
-    <module>platform-pojo</module>
-    <module>platform-web</module>
-    <module>platform-base</module>
-    <module>platform-utils</module>
-  </modules>
-  <properties>
-  	<project.version>0.0.1</project.version>
-  	<project.modelVersion>4.0.0</project.modelVersion>  
-  </properties>
-<build>  
-        <plugins>  
-            <plugin>  
-                <groupId>org.apache.maven.plugins</groupId>  
-                <artifactId>maven-compiler-plugin</artifactId>  
-                <configuration>  
-                    <source>1.8</source>  
-                    <target>1.8</target>  
-                </configuration>  
-            </plugin>  
-        </plugins>  
-    </build> 
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.cn</groupId>
+	<artifactId>platform</artifactId>
+	<version>0.0.1</version>
+	<packaging>pom</packaging>
+	<name>platform</name>
+	<modules>
+		<module>platform-dao</module>
+		<module>platform-service</module>
+		<module>platform-pojo</module>
+		<module>platform-web</module>
+		<module>platform-base</module>
+		<module>platform-utils</module>
+	</modules>
+	<properties>
+		<project.sourceEncoding>UTF-8</project.sourceEncoding>
+		<project.junit.version>3.8.1</project.junit.version>
+		<spring.version>4.3.18.RELEASE</spring.version>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${project.junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- logback -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.logback-extensions</groupId>
+			<artifactId>logback-ext-spring</artifactId>
+			<version>0.1.5</version>
+		</dependency>
+		<!-- slf4j -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.25</version>
+		</dependency>
+	</dependencies>
+
 </project>
