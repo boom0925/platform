@@ -14,30 +14,30 @@
 	<mvc:resources location="/assets/" mapping="/assets/**" />
 	<mvc:resources location="/resources/" mapping="/resources/**" />
 	<mvc:resources location="/WEB-INF/error/" mapping="/error/**" /> -->
-<!-- 
+
 	<bean id="templateResolver"
-		class="org.thymeleaf.spring3.templateresolver.SpringResourceTemplateResolver">
-		模板文件的路径前缀
+		class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
+		<!-- 模板文件的路径前缀 -->
 		<property name="prefix" value="/WEB-INF/pages/" />
-		模板文件的路径后缀
+		<!-- 模板文件的路径后缀 -->
 		<property name="suffix" value=".html" />
 		<property name="templateMode" value="HTML" />
-		配置是否缓存
+		<!-- 配置是否缓存 -->
 		<property name="cacheable" value="false" />
-		默认编码格式
+		<!-- 默认编码格式 -->
 		<property name="characterEncoding" value="UTF-8" />
 	</bean>
-	模板引擎
-	<bean id="templateEngine" class="org.thymeleaf.spring3.SpringTemplateEngine">
+	<!-- 模板引擎 -->
+	<bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
 		<property name="templateResolver" ref="templateResolver" />
 	</bean>
-	视图解析器
-	<bean class="org.thymeleaf.spring3.view.ThymeleafViewResolver">
+	<!-- 视图解析器 -->
+	<bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
 		<property name="templateEngine" ref="templateEngine" />
 		<property name="characterEncoding" value="UTF-8" />
 	</bean>
 
-	处理请求返回json字符串的中文乱码问题
+	<!-- 处理请求返回json字符串的中文乱码问题 -->
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="true">
             <bean class="org.springframework.http.converter.StringHttpMessageConverter">
@@ -51,7 +51,7 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
     
-	<mvc:interceptors>
+	<!-- <mvc:interceptors>
 		配置登陆拦截器
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
