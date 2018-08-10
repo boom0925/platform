@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.popeye.dao.news.NewsMapper">
+<mapper namespace="com.popeye.dao.mapper.NewsMapper">
 	<resultMap id="NewsPojo" type="com.popeye.entity.news.NewsPojo">
 		<result column="id" property="id" jdbcType="INTEGER" />
 		<result column="title" property="title" jdbcType="VARCHAR" />
@@ -9,7 +9,7 @@
 	</resultMap>
 
 	<!-- 查询店铺维护人员列表 -->
-	<select id="queryShopDefendUser"  resultMap="NewsPojo">
+	<select id="getAllNews"  resultMap="NewsPojo">
 		select id,title,content from news_info 
 	</select>
 </mapper>

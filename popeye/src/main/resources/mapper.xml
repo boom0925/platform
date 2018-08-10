@@ -8,7 +8,8 @@
      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
      http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
-     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd" 
+   default-lazy-init="true" >
 
 	<bean id="slf4j-filter" class="com.alibaba.druid.filter.logging.Slf4jLogFilter">
 		<property name="statementExecutableSqlLogEnable" value="true" />
@@ -19,9 +20,9 @@
 		<property name="logSlowSql" value="true" />
 	</bean>
 
-	<!-- 数据源 -->
-	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
-		init-method="init" destroy-method="close">
+	<!-- 数据源  init-method="init" -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"  
+		 destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<!-- 基本属性 url、user、password -->
 		<property name="url" value="${url}" />

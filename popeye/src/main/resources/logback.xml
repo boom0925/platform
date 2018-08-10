@@ -161,7 +161,9 @@
     <logger name="com.ibatis" value="DEBUG" />    
     <logger name="com.ibatis.common.jdbc.SimpleDataSource" value="DEBUG" />    
     <logger name="com.ibatis.common.jdbc.ScriptRunner" level="DEBUG"/>    
-    <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" value="DEBUG" />   -->  
+    <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" value="DEBUG" />   -->
+    <!-- 不输出thymeleaf -->
+     <logger name="org.thymeleaf.TemplateEngine" level="OFF" />      
       
       
       
@@ -170,10 +172,10 @@
         <!-- 控制台输出 -->  
         <appender-ref ref="STDOUT" />  
         <!-- 文件输出 -->  
-<!--         <appender-ref ref="ERROR" />  
+         <appender-ref ref="ERROR" />  
         <appender-ref ref="INFO" />  
         <appender-ref ref="WARN" />  
         <appender-ref ref="DEBUG" />  
-        <appender-ref ref="TRACE" />   -->
+        <appender-ref ref="TRACE" />   
     </root>  
 </configuration>  
