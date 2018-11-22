@@ -60,12 +60,13 @@ public class Engine {
 
     @Test
     public void start(){
-        try {
-            sendEmail();
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    	System.out.println(1);
+//        try {
+//            sendEmail();
+//        } catch (MessagingException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 }
