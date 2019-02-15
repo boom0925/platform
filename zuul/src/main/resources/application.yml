@@ -1,0 +1,16 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8080/eureka/
+server:
+   port: 8085
+spring:
+  application:
+    name: zuul
+
+zuul:
+   routes:
+     users:
+       path: /bd/**
+       url: http://news.cctv.com/zgwgs/
+          
