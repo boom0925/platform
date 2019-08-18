@@ -1,109 +1,103 @@
 package com.shiro.controller;
 
-import java.io.UnsupportedEncodingException;
-import java.util.Arrays;
 
-import javax.annotation.Resource;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
-import org.apache.shiro.crypto.RandomNumberGenerator;
-import org.apache.shiro.crypto.SecureRandomNumberGenerator;
-import org.apache.shiro.crypto.hash.SimpleHash;
-import org.apache.shiro.subject.Subject;
-import org.apache.shiro.util.ByteSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shiro.service.LoginService;
-import com.shiro.utils.JWTUtil;
 
 
 @RestController
 @RequestMapping("/login")
 public class LoginController {
+	private Logger logger = LoggerFactory.getLogger(LoginController.class);
 
 	@Autowired
 	private LoginService loginService;
 	
-	@RequiresRoles("bbb")
-	@RequestMapping(value="/mon")
-	public String index(){
+	/**
+	 * 测试角色
+	 * @return
+	 */
+	@RequiresRoles("normal")
+	@RequestMapping(value="/normal")
+	public String normal(){
+		//查看session时间 
 		long timeout = SecurityUtils.getSubject().getSession().getTimeout();
 		System.out.println(timeout+"毫秒");
-		//Subject currentUser = SecurityUtils.getSubject();
-//		System.out.println(currentUser.hasAllRoles(Arrays.asList("aaa,bbb,cc,guess")));
-//		System.out.println(currentUser.hasRole("aaa"));
-//		System.out.println(currentUser.hasRole("bbb"));
-//		System.out.println(currentUser.hasRole("guess"));
-//		System.out.println(currentUser.hasRole("ccc"));
-		return "subin";
+		logger.info("进入了normal 方法！ ");
+		return "succ";
 	}
 	
 	
-	@RequestMapping(value="/test",method=RequestMethod.POST,produces="application/json;charset=UTF-8")
-	@ResponseBody
-	public String com(@RequestBody String data){
-		
-		System.out.println(data);
-		return "subin";
+	@RequiresRoles("admin")
+	@RequestMapping(value="/admin")
+	public String admin(){
+		logger.info("进入了admin 方法！ ");
+		return "succ";
 	}
 	
-
+	/**
+	 * 测试多个角色
+	 * @return
+	 */
+	@RequiresRoles(value = {"admin","normal"},logical = Logical.OR)
+	@GetMapping("/more")
+	public String more() {
+		logger.info("进入了more 方法！ ");
+		return "succ";
+	}
+	
+	/**
+	 * 测试权限
+	 */
+	
+	@RequiresPermissions("buy:update")
+	@GetMapping("/update")
+	public String update() {
+		logger.info("进入了update 方法！ ");
+		return "succ";
+	}
+	
+	
+	@RequiresPermissions("buy:insert")
+	@GetMapping("/insert")
+	public String insert() {
+		logger.info("进入了insert 方法！ ");
+		return "succ";
+	}
+	
 
 	/**
 	 * 登录
 	 */
 	@GetMapping("/auth")
 	public String authLogin(String username,String password) {
-		//return loginService.authLogin(username,password);
-		try {
-			return JWTUtil.createToken(username);
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		return loginService.authLogin(username,password);
 	}
 	
-	  @RequestMapping(path = "/unauthorized/{message}")
-	    public String unauthorized(@PathVariable String message) throws UnsupportedEncodingException {
-	        return message;
-	    }
 	
 	/**
 	 * 退出
 	 */
-	@RequiresPermissions("aa:cre")
 	@GetMapping("/logout")
 	public String logout() {
 		loginService.logout();
 		return "succ";
 	}
 	
-	//@RequiresRoles(value = {"zzz","nnn"},logical = Logical.OR)
-	@GetMapping("/exam")
-	public String exam() {
-//		long timeout = SecurityUtils.getSubject().getSession().getTimeout();
-//		System.out.println(timeout+"毫秒");
-		System.out.println("exam");
-		RandomNumberGenerator randomNumberGenerator =new SecureRandomNumberGenerator();
-		//5dec2477061af54165687790621cdacb-------------ca3b37e750628ee0c8d28702a659ad8a
-		String stal="5dec2477061af54165687790621cdacb";
-		String newPassword = new SimpleHash("md5","111111",ByteSource.Util.bytes(stal),2).toHex();
-		System.out.println(stal+"-------------"+newPassword);
-		return "succ";
-	}
+
 	/**
-	 * 退出
+	 *  查看用户权限
 	 */
 	
 	@GetMapping("/getUserInfo")
@@ -111,5 +105,16 @@ public class LoginController {
 		loginService.getUserInfo();
 		return "succ";
 	}
+	
+	/**
+	 * 需要manager角色
+	 */
+	
+	@GetMapping("/manager")
+	public String manager() {
+		logger.info("进入了manager 方法！ ");
+		return "succ";
+	}
+	
 	
 }

@@ -66,11 +66,11 @@ public class LoginServiceImpl implements LoginService{
 				UserInfo userInfo = (UserInfo) session.getAttribute(Constants.SESSION_USER_INFO);
 				System.out.println(userInfo.toString());
 				Set<String> menuList = new HashSet<>();
-				menuList.add("aa");
-				menuList.add("bb");
+				menuList.add("buy");
+				menuList.add("sail");
 				Set<String> permissionList = new HashSet<>();
-				permissionList.add("aa:cre");
-				permissionList.add("bb:del");
+				permissionList.add("buy:update");
+				permissionList.add("sail:delele");
 				JSONObject info = new JSONObject();
 				info.put("menuList", menuList);
 				info.put("permissionList", permissionList);

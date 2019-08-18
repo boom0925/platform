@@ -10,6 +10,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+/**
+ * shiro官网示例
+ * @author Administrator
+ *
+ */
 public class Tutorial {
 
     private static final transient Logger log = LoggerFactory.getLogger(Tutorial.class);

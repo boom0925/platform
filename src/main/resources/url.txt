@@ -1,0 +1,10 @@
+测试:
+shiro部分
+http://localhost:8080/shiro/login/auth?username=su&password=111111
+http://localhost:8080/shiro/login/getUserInfo
+http://localhost:8080/shiro/login/normal
+http://localhost:8080/shiro/login/admin
+http://localhost:8080/shiro/login/more
+http://localhost:8080/shiro/login/update
+http://localhost:8080/shiro/login/insert
+http://localhost:8080/shiro/login/manager
