@@ -1,8 +1,6 @@
 package com.shiro.utils.constants;
 
 /**
- * @author: hxy
- * @date: 2017/10/24 10:16
  */
 public enum ErrorEnum {
 	/*

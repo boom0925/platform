@@ -13,12 +13,8 @@ import com.shiro.utils.ResultMap;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created with IntelliJ IDEA
  *
- * @Author yuanhaoyue swithaoy@gmail.com
  * @Description 异常处理
- * @Date 2018-04-09
- * @Time 17:09
  */
 @RestControllerAdvice
 public class ExceptionController {
